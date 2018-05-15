@@ -1,0 +1,17 @@
+.top{
+	height: 500px;
+	width: 200px;
+	background-color: #65a4fa;
+	float: left;
+	color: #fff;
+	text-align: center;
+    padding-top: 40px;
+}
+.warm{
+	float: left;
+	margin-left: 20px;
+}
+.cleanfloat{
+	overflow: auto;
+	size: 1;
+}
