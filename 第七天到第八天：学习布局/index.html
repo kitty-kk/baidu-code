@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>7到8天的作业</title>
+	<link rel="stylesheet" type="text/css" href="CSS.css">
+</head>
+<body>
+   <!--设计稿分为头部，中间的Banner，主导航，内容区域，底部
+头部区域为100%宽的一个深色背景，头部中间有一块960px的定宽居中区域，里面包括了左边的Logo和右上角导航
+Banner为100%宽的区块，中间右下方有banner轮显的当前图片数字的示例，其中正在显示的图片对应的数字有特殊样式（注意不需要实现轮显banner的业务逻辑，只是按照设计稿做静态样式）
+主导航区域，有一个100%宽的灰色线条，线条之上，在中间960px区域是导航菜单，当前正在浏览页对应的菜单有特殊样式
+主要内容区域，宽度为960px，里面每个内容都有至少80px的padding，每一个内容的宽度均为自适应，可以使用flex布局-->
+
+<!--头部-->
+<header>
+	<div class="top-bgcolor">
+		<div class="top">
+			<div class="logo-title">
+			    <span>Logo</span>
+			</div>
+			<div class="top-nav">
+				<a href="#">Github</a>
+				<a href="#">Register</a>
+				<a href="#">Login</a>
+			</div>
+        </div>
+	</div>
+    <div class="banner-bgcolor">
+    	<div class="banner-img">
+			<div class="banner-nav">
+				<ul>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+				</ul>
+			</div>
+	   </div>
+    </div>
+</header>
+<content>
+	<div class="content-bgcolor">
+		<div class="content-submenu">
+			<ul>
+				<li><a class="one" href="#">HOMW</a></li>
+				<li><a href="#">PROFILE</a></li>
+				<li><a href="#">ABOUT</a></li>
+			</ul>
+	    </div>
+	</div>
+	<div class="content-container">
+		<div class="column1">
+			<div class="column1-content">
+				<span>This is Content1</span>
+			</div>
+			<div class="column1-content">
+				<span>MaybeContent2</span>
+			</div>
+			<div class="column1-content">
+				<span>Content3</span>
+			</div>
+		</div>
+		<div class="column2">
+			<div class="column2-content">
+				<span>Content4</span>
+			</div>
+			<div class="column2-content">
+				<span>Content5</span>
+			</div>
+			<div class="column2-content">
+				<span>Content6</span>
+			</div>
+			<div class="column2-content">
+				<span>Content7</span>
+			</div>
+		</div><div class="column1">
+			<div class="column1-content">
+				<span>Content8</span>
+			</div>
+			<div class="column1-content">
+				<span>Content9</span>
+			</div>
+			<div class="column1-content">
+				<span>Content10</span>
+			</div>
+		</div>
+	</div>
+</content>
+<footer>
+	<div class="footer-bgcolor">
+        <div class="footer-title">
+	    	<span>@2018 ife.baidu.com</span> 
+	    </div>
+	</div>
+</footer>
+</body>
+</html>
