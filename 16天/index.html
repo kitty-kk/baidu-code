@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>个人简历</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="CSS.css">
+</head>
+<body>
+    <header>
+        <h2>简历</h2>
+    </header>
+    <content>
+    	<div class="text-box">
+            <h4>基本信息</h4>
+            <div class="text">
+                <strong> 姓名</strong>
+                <span>张三</span>
+                 <strong class="font">性别</strong>
+                <span>男</span>
+                 <strong class="font">应聘职位</strong>
+                <span>Web前端工程师</span>
+                <br/>
+                <p onclick="this.innerHTML='我是来自广东某个城市的大男孩，我想成为一名码农，和你们一样'" class="cursor">点击查看我的位置</p>
+            </div>
+        </div>
+        <div class="text-box">
+            <h4>联系方式</h4>
+            <div class="text">
+                <strong>手机</strong>
+                <span>12312312341</span>
+                <strong class="font">Email</strong>
+                 <a href="mailto:joinefe@baidu.com">joinefe@baidu.com</a>
+                <strong class="font">个人主页</strong>
+                 <a href="kitty-kk.github.io">github</a>
+            </div>
+        </div>
+        <div class="text-box">
+            <h4>能力描述</h4>
+            <div class="text">
+                <p><strong>技术能力</strong>熟练掌握HTML,CSS,JavaScript</p>
+                <p><strong>综合能力</strong>良好的沟通，主动积极，努力勤奋</p>
+            </div>
+        </div>
+        <div class="text-box">
+            <h4>育经历</h4>
+            <div class="text">
+                <p><strong>本科</strong>百度前端学院小微</p>
+                <p><strong>研究生</strong>百度前端技术学院大斌学院</p>
+            </div>
+        </div>
+        <div class="text-box">
+            <h4>项目经验</h4>
+            <div class="text">
+                <p><strong>小度小度</strong>作为前端工程师角色参与了ABC组件的开发</p>
+                <p><strong>SAN Doc</strong>作为文档工程师参与了SAN Doc编写</p>
+            </div>
+        </div>
+    </content>
+        <p id="ptime"></p>
+</body>
+<script>
+    window.onload=timedCount;
+        function timedCount()
+        {
+            var _date=new Date();
+            var year=_date.getFullYear();
+            var month=_date.getMonth()+1;
+            var day=_date.getDay();
+            var hours=_date.getHours();
+            var minutes=_date.getMinutes();
+            var seconds=_date.getSeconds();
+            document.getElementById("ptime").innerHTML=  year+"年"+month+"月"+day+"日"+hours+":"+minutes+":"+seconds;
+            setTimeout("timedCount()",1000);
+        }
+   
+    
+</script>
+</html>
