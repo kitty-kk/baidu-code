@@ -61,16 +61,14 @@
         var findhtml = document.querySelectorAll(".section");
         var findSpan;//用于存储findhtml找到的span标签
         var findLI;
-        var content;//存储元素的内容
-        var num = 0 ;
         findhtml.forEach(function(findhtml){
             findLI = document.querySelectorAll("li");
                 for(var j=0;j<findLI.length; j++){
                     findSpan = document.querySelectorAll("span");
                     for(var i=0; i<findSpan.length; i++){
                         if(findSpan[i].innerHTML == "spanCont"){
-                            //console.log(document.querySelectorAll("li">findSpan[i]));
-                            return document.querySelectorAll("li">findSpan[i]);
+                            //console.log(findSpan[i].parentNode);
+                            return findSpan[i].parentNode;
                         } 
                     }
                 }
@@ -84,7 +82,10 @@
         var findactive;
         findHTML.forEach(function(findHTML){
             findactive = document.querySelectorAll(".active");
-            console.log(findactive);
+            for(var i=0;i<findactive.length;i++){
+              return  findactive[i].innerHTML;
+              //console.log(findactive[i].innerHTML);
+            }
         });
 
     }
