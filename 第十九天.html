@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>        
+    <div id="wrapper">
+        <div id="news-top" class="section">
+            <h3>Some title</h3>
+            <div class="content">
+                <ul>
+                    <li><span>HTML</span><a href="">Some Link1</a></li>
+                    <li><span>JS</span><a class="active" href="">Some Link2</a></li>
+                    <li><span>spanCont</span><a href="">Some Link3</a></li>
+                    <li><span>JS</span><a href="">Some Link4</a></li>
+                </ul>
+            </div>
+            <img src="">
+            <p class="">Some Text</p>
+        </div>
+        <div id="news-normal" class="section">
+            <h3>Some title</h3>
+            <div class="content">
+                <ul>
+                    <li><span>HTML</span><a href="">Some Link1</a></li>
+                    <li><span>HTML</span><a href="">Some Link2</a></li>
+                    <li><span>JS</span><a class="active" href="#">Some Link3</a></li>
+                    <li><span>CSS</span><a href="">Some Link4</a></li>
+                </ul>
+            </div>
+            <img src="">
+            <p class="">Some Text</p>
+        </div>      
+    </div>
+    <script>
+    function getAllListItem() {
+        // 返回页面中所有li标签
+        var matches = document.querySelectorAll("li");
+        return matches;
+    }
+
+    function findAllHtmlSpanInOneSection(sectionId) {
+        // 返回某个section下所有span中内容为HTML的span标签
+        var findhtml = document.querySelectorAll(".section");
+        var findSpan;//用于存储findhtml找到的span标签
+        var content;//存储元素的内容
+        findhtml.forEach(function(findhtml){
+            findSpan = document.querySelectorAll("span");
+                 for(var i=0; i<findSpan.length; i++){
+                     if(findSpan[i].innerHTML == "HTML"){
+                      // console.log(findSpan[i]);
+                      return findSpan[i];
+                 } 
+            }
+        });
+    }
+
+    function findListItem(sectionId, spanCont) {
+        // 返回某个section下，所有所包含span内容为spanCont的LI标签
+        var findhtml = document.querySelectorAll(".section");
+        var findSpan;//用于存储findhtml找到的span标签
+        var findLI;
+        var content;//存储元素的内容
+        var num = 0 ;
+        findhtml.forEach(function(findhtml){
+            findLI = document.querySelectorAll("li");
+                for(var j=0;j<findLI.length; j++){
+                    findSpan = document.querySelectorAll("span");
+                    for(var i=0; i<findSpan.length; i++){
+                        if(findSpan[i].innerHTML == "spanCont"){
+                            //console.log(document.querySelectorAll("li">findSpan[i]));
+                            return document.querySelectorAll("li">findSpan[i]);
+                        } 
+                    }
+                }
+           
+        });
+    }
+
+    function getActiveLinkContent(sectionId) {
+        // 返回某个section下，class为active的链接中包含的文字内容
+        var findHTML = document.querySelectorAll(".section");
+        var findactive;
+        findHTML.forEach(function(findHTML){
+            findactive = document.querySelectorAll(".active");
+            console.log(findactive);
+        });
+
+    }
+
+    </script>
+</body>
+</html>
