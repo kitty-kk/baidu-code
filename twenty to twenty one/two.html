@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+    <style>
+        .show{
+            display: block;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body id="body">            
+    <label>
+        <input id="school" name="status" type="radio">
+        School
+    </label>
+    <label>
+        <input id="company" name="status" type="radio">
+        Company
+    </label>
+
+    <select id="school-select" class="hide">        
+        <option>北京邮电大学</option>
+        <option>黑龙江大学</option>
+        <option>华中科技大学</option>
+    </select>
+
+    <select id="company-select" class="hide">        
+        <option>百度</option>
+        <option>爱奇艺</option>        
+    </select>
+    <script>
+    //优化前的代码
+        // var school=document.getElementById("school");
+        // var company=document.getElementById("company");
+        // var school_select = document.getElementById("school-select");
+        // var companyS_select = document.getElementById("company-select");
+        // school.onclick = function(){
+        //    if(school.checked){
+        //         school_select.style.display="block";
+        //         companyS_select.style.display="none"
+        //    }
+        // }
+        // company.onclick = function(){
+        //    if(company.checked){
+        //         school_select.style.display="none";
+        //         companyS_select.style.display="block"
+        //    }
+        // }
+    //优化后的代码
+    window.onload = function(){
+　　    var _body = document.getElementById("body");
+　　    _body.onclick = function(ev){
+　　　　    var ev = ev || window.event;
+　　　      var target = ev.target || ev.srcElement;
+            var school_select=document.getElementById('school-select');
+            var company_select=document.getElementById('company-select');
+　　　　    if(target.nodeName.toLowerCase() == 'input'){
+                if(school_select.classList.contains('hide')){
+                    school_select.classList.remove('hide');
+                    school_select.classList.add('show');
+
+                    company_select.classList.remove('show');
+                    company_select.classList.add('hide');
+                }else{
+                    school_select.classList.remove('show');
+                    school_select.classList.add('hide');
+
+                    company_select.classList.remove('hide');
+                    company_select.classList.add('show');
+                }
+               
+　　　　    }
+　　    }
+    }
+    </script>
+</body>
+</html>

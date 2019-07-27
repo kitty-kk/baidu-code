@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    </head>
+    <body> 
+        <input name="name" id="name" onkeydown="keyDown()"/>
+        <button id="submit-btn">Submit</button>
+        <script>
+            var _input = document.getElementById("name");
+            var _button = document.getElementById("submit-btn");
+            _button.onclick=btn;
+            function btn(){
+                console.log(_input.value);
+            }
+            function keyDown(){
+                if(event.keyCode == 13){ 
+                    event.returnValue=false;
+                    event.cancel=true;
+                    btn();
+                }
+                if(event.keyCode == 27){
+                    event.returnValue = false;
+                    event.cancel = true;
+                    _input.value = "";
+                }
+            }
+        </script>
+    </body>
+</html>

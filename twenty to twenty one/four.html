@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>计时器的使用</title>
+    </head>
+    <body>
+        <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+        <button id="fade-btn">淡出</button>
+        <script>
+            var fade_btn=document.getElementById("fade-btn");
+            var fade_obj=document.getElementById("fade-obj");
+            var opacityint=1; //透明度的初始值
+            var time; // setTimeout
+            fade_obj.style.opacity=opacityint;
+            fade_btn.onclick=op;
+            //使用setTimeout对函数进行执行
+            function op(){
+                time= setTimeout(op,100);
+                if(fade_btn.innerHTML == "淡出"){
+                    opacityint= opacityint - 0.1;
+                    opacitynume();
+                }else{
+                    opacityint =opacityint + 0.1;
+                    opacitynume();
+                }
+                console.log(opacityint);
+            }
+            //对html页面进行文字的更改
+            function opacitynume(){
+                fade_obj.style.opacity=opacityint;
+                fade_btn.disabled=true;
+                if(opacityint<0){
+                    clearTimeout(time);
+                    fade_btn.disabled=false;
+                    fade_btn.innerHTML="淡入";
+                    opacityint=0;
+                }
+                
+                if(opacityint>1){
+                    clearTimeout(time);
+                    fade_btn.disabled=false;
+                    fade_btn.innerHTML="淡出";
+                    opacityint=1;
+                }
+            }
+        </script>
+    </body>
+</html>
