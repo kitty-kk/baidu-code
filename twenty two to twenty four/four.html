@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <meta charset="utf8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>数组,队列的相关入队、出队、获取队头、判空的操作</title>
+    </head>
+    <body>
+            <input id="queue-input" type="text">
+            <p id="queue-cont"></p>    
+            <button id="in-btn">入队</button>
+            <button id="out-btn">出队</button>
+            <button id="font-btn">打印队头元素内容</button>
+            <button id="empty-btn">判断队列是否为空</button>
+            
+            <script>
+            var queue = ["apple", "pear"];
+            var queue_cont=document.getElementById("queue-cont"),
+                in_btn=document.getElementById("in-btn"),
+                out_btn=document.getElementById("out-btn"),
+                font_btn=document.getElementById("font-btn"),
+                empty_btn=document.getElementById("empty-btn"),
+                queue_input = document.getElementById("queue-input");
+            //队列内容
+            window.onload = queuecont;
+            function queuecont(){
+                queue_cont.innerHTML = "队列内容：";
+                for(var i=0; i<queue.length;i++){
+                    queue_cont.innerHTML += queue[i] + "&gt;";
+                }
+            }
+            //入队
+            in_btn.onclick = inbtn;
+            function inbtn(){
+                queue.push(queue_input.value);
+                queuecont();
+            }
+            //出队 
+            out_btn.onclick = outbtn;
+            function outbtn(){
+                queue.pop();
+                queuecont();
+            }
+            //打印队头元素内容
+            font_btn.onclick=fontbtn;
+            function fontbtn(){
+                queue_cont.innerHTML = "队头元素内容:" + queue[queue.length-1];
+            }
+            //判断队列是否为空
+            empty_btn.onclick = emptybtn;
+            function emptybtn(){
+                if(queue.length == 0){
+                    queue_cont.innerHTML = "队列为空";
+                }
+                if(queue.length >0){
+                    queue_cont.innerHTML = "队列不为空";
+                }
+            }
+            </script>
+    </body>
+</html>

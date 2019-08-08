@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <meta charset="utf8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>进栈、退栈、获取栈顶、判空的操作</title>
+    </head>
+    <body>
+        <input id="stack-input" type="text">
+        <p id="stack-cont"></p>    
+        <button id="push-btn">进栈</button>
+        <button id="pop-btn">退栈</button>
+        <button id="font-btn">打印栈顶元素内容</button>
+        <button id="empty-btn">判断栈是否为空</button>
+
+<script>
+
+var stack = ["apple", "pear"];
+//id
+var cont=document.getElementById("stack-cont"),
+    sinput = document.getElementById("stack-input"),
+    pushbt = document.getElementById("push-btn"),
+    popbt = document.getElementById("pop-btn"),
+    fontbt = document.getElementById("font-btn"),
+    emptybt = document.getElementById("empty-btn");
+
+function Stack(){
+    //栈内容
+    this.join = function(){
+       return cont.innerHTML = "队列内容：" + stack.join("->");
+    }
+    //进栈
+    this.push = function(){
+       return stack.push(sinput.value);
+    }
+    //退栈
+    this.pop = function(){
+       return stack.pop();
+    }
+    //打印栈顶元素内容
+    this.peek = function(){
+        return stack[stack.length-1];
+    }
+    //判断栈是否为空
+    this.isEmpty = function(){
+        return stack.length == 0;
+    }
+}
+var return_stack = new Stack();
+return_stack.join();
+pushbt.onclick = function(){
+    return_stack.push();
+    return_stack.join();
+}
+popbt.onclick = function(){
+    return_stack.pop();
+    return_stack.join();
+}
+fontbt.onclick = function(){
+    cont.innerHTML ="打印栈顶元素内容:" + return_stack.peek();
+
+}
+emptybt.onclick = function(){
+    cont.innerHTML ="栈是否为空:" + return_stack.isEmpty();
+}
+</script>
+    </body>
+</html>
