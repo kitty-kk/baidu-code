@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta charset="utf8" >
+        <meta name="viewport" content="width=device-width,initial-scale = 1.0">
+        <title>date练习</title>
+    </head>
+    <body>
+        <p id="date_time"></p>
+        <script>
+            function startTime(){
+            var date_time = document.getElementById("date_time");
+            var time = new Date();
+            var year=time.getFullYear();
+            var month=time.getMonth();
+            var date=time.getDate();
+            var day=time.getDay();
+            //数组获取星期几
+            var weekday = ["星期日" , "星期一" , "星期二" , "星期三" , "星期四" , "星期五" , "星期六"];
+            var h=time.getHours(); 
+            var m=time.getMinutes();
+            var s=time.getSeconds();
+            m = checktime(m);
+            s = checktime(s);
+            // date_time.innerHTML = year +"年" + month + "月"+ date + "日" + "   " + weekday[day] 
+            //                       + h +":" + m + ":" + s; 
+            g = "-"
+            date_time.innerHTML = format(year,month,date,day,h,m,s,g);
+            var T = setTimeout("startTime()", 1000);
+            }
+            //判断位数，不够两位0来补充
+            function checktime(n){
+                if(n < 10){
+                    n = "0" + n;
+                    return n;
+                }else{
+                    return n;
+                }
+            }
+            //格式进行包装  g:格式 y:year m:month d:date w:weekday h:hour m:minutes s:seconds
+            function format(y,m,d,w,h,m,s,g){
+                var time;
+                var weekday = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+                if(h >12){
+                    h = h-12;
+                    time = " pm";
+                }else{
+                    time = " AM";
+                }
+                return y + g + m + g + d +g + weekday[w]  + h + ":" + m + ":" + s + time;
+            }
+            startTime();
+        </script>
+    </body>
+</html>

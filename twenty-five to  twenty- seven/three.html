@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>函数封装</title>
+    </head>
+    <body>
+        <select id="year-select">
+            <!-- 设定年的值为20年期限 -->
+        </select>年
+        
+        <select id="month-select">
+            <!--月份  -->
+        </select>月
+        
+        <select id="day-select">
+        </select>日
+        
+        <select id="hour-select">
+            <!-- 时 -->
+        </select>时
+        
+        <select id="minite-select">
+            <!-- 分 -->
+        </select>分
+        
+        <select id="second-select">
+            <!-- 秒 -->
+        </select>秒
+        
+        <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+        <script>
+            let year = document.getElementById("year-select"); //年的select id
+            let month = document.getElementById("month-select");//月的select id
+            let day_id = document.getElementById("day-select"); //日的select id
+            let hour = document.getElementById("hour-select");//hour-select id
+            let minite = document.getElementById("minite-select"); // minite-select id
+            let second = document.getElementById("second-select"); // second-select id
+            let result = document.getElementById("result-wrapper");
+            //进入页面后开始执行函数  //在页面显示时间的值
+            year_select();
+            month_select();
+            hour_select();
+            minite_select();
+            second_select();
+            
+            let chyear = year.value,
+                chmonth = month.value,
+                chhour = hour.value,
+                chminite = minite.value,
+                chsecond = second.value;
+            day_select(monthDay(chyear,chmonth));
+            let chday = day_id.value;
+            //年
+            function year_select(){
+                let num = 2020; //设定年的值为20年期限
+                let m = 2000; // 循环开始值
+                appoption(m,num,year);
+            }
+            //月
+            function month_select(){
+                let num = 12 ;// 循环结束值
+                let m=1;// 循环开始值
+                appoption(m,num,month);
+            }
+            //日
+            function day_select(daynum){
+                let num = daynum ;// 循环结束值
+                let m=1;// 循环开始值
+                appoption(m,num,day_id);
+            }
+            //时
+            function hour_select(){
+                let num = 23;// 循环结束值
+                let m = 0 ;// 循环开始值
+                appoption(m,num,hour);
+            }
+            //分
+            function minite_select(){
+                let num = 59;// 循环结束值
+                let m = 0 ;// 循环开始值
+                appoption(m,num,minite);
+            }
+            //秒
+            function second_select(){
+                let num = 59;// 循环结束值
+                let m = 0 ;// 循环开始值
+                appoption(m,num,second);
+            }
+            //使用for循环 添加option标签
+            //i 循环开始值 num 循环的次数 ele = id
+            function appoption(m,num,ele){
+                let node; // option下的文本月份值
+                let option ;//创建的option标签
+                for(var i=m; i <= num; i++){
+                    node = document.createTextNode(i);
+                    option = document.createElement("option");
+                    option.appendChild(node);
+                    option.value = i;
+
+                    ele.appendChild(option);
+                }
+            }
+            //判断是否是闰年
+            function isLeapYear(year) {
+                // 如果year年2月没有29则自动进一变为3月1日
+                // var date = new Date(year, 1, 29)
+                // return date.getDate() === 29;
+                return year;
+            }
+            //判断每个月的天数
+            //将时间date设置为下个月的第一天，然后回拨一秒
+            function monthDay(year, month) {
+                var date = new Date(year, month, 1, 0, 0, 0)
+                var yesterDay = new Date(date - 1000)
+                return yesterDay.getDate()
+            }
+            //设置改变的值 
+            year.onchange = function(){
+                chyear = year.value;
+                matchtime(chyear,chmonth,chday,chhour,chminite,chsecond);
+            }
+           month.onchange = function(){
+               chmonth = month.value;
+               matchtime(chyear,chmonth,chday,chhour,chminite,chsecond);
+           }
+           day_id.onchange = function(){
+               chday = day_id.value;
+               matchtime(chyear,chmonth,chday,chhour,chminite,chsecond);
+           }
+           hour.onchange = function(){
+               chhour = hour.value;
+               matchtime(chyear,chmonth,chday,chhour,chminite,chsecond);
+           }
+           minite.onchange = function(){
+               chminite = minite.value;
+               matchtime(chyear,chmonth,chday,chhour,chminite,chsecond);
+           }
+           second.onchange = function(){
+               chsecond = second.value;
+               matchtime(chyear,chmonth,chday,chhour,chminite,chsecond);
+           }
+            //用户输入的时间与现在的时间对比
+            //chyear : 用户输入的年份   chmonth 用户输入的月份
+            function matchtime(chyear,chmonth,chday,chhour,chminite,chsecond){
+                let _date = new Date();
+                let day = new Date(chyear,chmonth-1,chday,chhour,chminite,chsecond);
+                //剩余/已经过去 X 天 X 小时 X 分 X 秒"
+                let sum = _date.getTime() - day.getTime(); //计算毫米数
+                let summath = Math.abs(sum/24/60/60/1000);
+                let sumday =Math.abs(parseInt(summath)); //天数
+                let sumhour =parseInt((summath - sumday)*24);　//小时
+                let summinite =parseInt((((summath-sumday)*24) - sumhour) * 60); //分钟
+                let sumsecond =parseInt(((((summath-sumday)*24) - sumhour) * 60-summinite)*60); //秒钟
+                if(sum > 0){
+                    result.innerHTML = "现在距离"+ chyear +"年"+ chmonth+"月"+ chday+"日星期" + week(day.getDay()) +"  "+ chhour +":"+ chminite +":" + chsecond +" 已过去 " +sumday+ " 天 "+ sumhour +" 小时 "+ summinite+" 分 " + sumsecond + " 秒";
+                }else{
+                    result.innerHTML = "现在距离"+ chyear +"年"+ chmonth+"月"+ chday+"日星期" + week(day.getDay()) +"  "+ chhour +":"+ chminite +":" + chsecond +" 剩余 " +sumday+ " 天 "+ sumhour +" 小时 "+ summinite+" 分 " + sumsecond + " 秒";
+                }
+            }
+            matchtime(chyear,chmonth,chday,chhour,chminite,chsecond);
+            //星期几
+            function week(num){
+                let today = new Array();
+                today[0] = "星期天";
+                today[1] = "星期一";
+                today[2] = "星期二";
+                today[3] = "星期三";
+                today[4] = "星期四";
+                today[5] = "星期五";
+                today[6] = "星期六";
+                return today[num];
+            }
+        </script>
+    </body>
+</html>

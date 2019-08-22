@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html> 
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>函数的使用</title>
+    </head>
+    <body>
+<script>
+function Go() {
+    console.log("Go");
+}
+
+function GoSteps(n) {
+    var number = n; 
+    if(number == true || number === undefined){
+        Go();
+    }else{
+        console.log("请传入的值为整数类型的值");
+    }
+    if(!isNaN(number)){
+        number = Math.floor(parseInt(number));
+        //console.log(typeof(num));
+        if(number >= 0){
+            for(var i=0; i<number; i++){
+                Go();
+            }
+        }
+    }
+}
+
+// GoSteps(10); // Go 10次
+// GoSteps(1); // Go 1次
+// GoSteps(); // Go 1次，认为缺少参数时，默认参数为1
+// GoSteps(0);  // 0次
+// GoSteps(-1);  // 0次
+// GoSteps(1.4);  // Go 1次
+// GoSteps(1.6);  // Go 1次
+// GoSteps(-1);  // 0次
+// GoSteps(true);  // Go 1次
+// GoSteps(false);  // 0次
+// GoSteps("Test");  // 0次
+// GoSteps(NaN);  // 0次
+// GoSteps(null);  // 0次        
+</script>
+    </body>
+</html>
