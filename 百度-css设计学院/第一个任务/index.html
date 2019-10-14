@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <meta charset="utf8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>css设计学院第一个任务</title>
+        <style>
+            .wamper{
+                width: 200px;
+                padding-top: 30px;
+                min-width: 200px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            .wamper .text{
+                font-size: 22px;
+                font-weight: bold;
+                margin-bottom: 30px;
+            }
+            .wamper .text .borderStyle{
+                display: block;
+                width: 0%;
+                height: 4px;
+                margin: 0 auto;
+                margin-top: 10px;
+                background-color: #4265d6;
+                transition: width .4s ease-out;
+            }
+            .wamper button{
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                padding: 5px;
+                font-size: 16px;
+                outline: none;
+                transition: all .2s ease-out;
+            }
+            .button{
+                background-color: orange !important;
+                border: orangered !important;
+                color: #fff;
+                transition: all .2s ease-in;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wamper">
+            <div class="text">前端学院<span class="borderStyle" id="span"></span></div>
+            <button id="but" onclick="btnclick(this)">切换样式</button>
+        </div>
+        <script>
+                var btn = document.getElementById('but'),
+                    spanId = document.getElementById('span');
+                function btnclick(style){
+                    name = style.className;
+                    if(name == "" || name.indexOf('button') == -1){
+                        btn.classList.add('button');
+                        spanId.style.width = '60%';
+                    }else{
+                        btn.classList.remove('button');
+                        spanId.style.width = '0%';
+                    }
+                }
+            </script>
+    </body>
+</html>
