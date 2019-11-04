@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=dive-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>纯 CSS 制作绕中轴旋转的立方体</title>
+    <style>
+        .father{
+            width: 250px;
+            margin: 0 auto;
+            perspective: 2000px;
+            transform-style: preserve-3d;
+            /* 兼容 */
+            -webkit-perspective: 2000px;
+            -webkit-transform-style: preserve-3d;
+            -moz-perspective: 2000px;
+            -moz-transform-style:preserve-3d;
+        }
+        .wamp{
+            position: relative;
+            width: 250px;
+            height: 350px;
+            transition: all .8s ease-in-out;
+        }
+        .wamp img{
+            display: block;
+            width: 250px;
+            height: 350px;
+            position: absolute;
+            top: 0;
+        }
+        .wamp:hover{
+            transform: rotateY(180deg);
+            transition: all .8s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="wamp">
+            <img src="正面.jpg">
+            <img src="反面.jpg">
+        </div>
+    </div>
+</body>
+</html>
